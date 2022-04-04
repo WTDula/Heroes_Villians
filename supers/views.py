@@ -10,7 +10,15 @@ from rest_framework import status
 @api_view(["GET", "POST"])
 def supers_list(request):
     if request.method == "GET":
-        pass
+        type_param = request.query_params.get('type')
+        
+        super = Super.objects.all()
+        if type_param:
+            super = super.filter(super_type__type = type_param)
+        else:
+            pass
+        serializer = SuperSerializer(super, many = True)
+        return Response(serializer.data)
     elif request.method == "POST":
         serializer = SuperSerializer(data = request.data)
         serializer.is_valid(raise_exception=True)
@@ -23,4 +31,12 @@ def supers_detail(request, pk):
     if request.method == "GET":
         serializer = SuperSerializer(super)
         return Response(serializer.data)
+    elif request.method == "PUT":
+        serializer = SuperSerializer(super, data = request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+    elif request.method == "DELETE":
+        super.delete()
+        return Response(status = status.HTTP_204_NO_CONTENT)
     
