@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+from super_types.models import SuperType
 from .models import Super
 from .serializers import SuperSerializer
 from django.shortcuts import get_object_or_404
@@ -15,10 +17,19 @@ def supers_list(request):
         super = Super.objects.all()
         if type_param:
             super = super.filter(super_type__type = type_param)
+            serializer = SuperSerializer(super, many = True)
+            return Response(serializer.data)
         else:
-            pass
-        serializer = SuperSerializer(super, many = True)
-        return Response(serializer.data)
+            super_types = SuperType.objects.all()
+            custom_response_dictionary = {}
+            for super_type in super_types:
+                super = Super.objects.filter(super_type__id = super_type.id)
+                super_serializer = SuperSerializer(super, many = True)
+                if super_type.type == "Hero":
+                    custom_response_dictionary['heroes'] = super_serializer.data
+                elif super_type.type == "Villain":
+                    custom_response_dictionary['villains'] = super_serializer.data
+            return Response(custom_response_dictionary)
     elif request.method == "POST":
         serializer = SuperSerializer(data = request.data)
         serializer.is_valid(raise_exception=True)
