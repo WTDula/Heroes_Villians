@@ -105,3 +105,10 @@ Accepts a body object from the request in the form of a Super model.
 · If a type query parameter is sent to the view function with the value of “villain”, the view function response should be a list of all supers that are associated with the type of “Villain” (Shown in End Result Overview video on portal)
 
 · If no type query parameter is sent, return a custom object response with a “heroes” key set equal to a list of supers of type “Hero” and a “villains” key set equal to a list of supers of type “Villain” (Shown in End Result Overview video on portal)
+
+Bonus 1:
+
+- Create a Power model in the supers app that contains a 'name' property .
+- Register Power model with admin site and seed several powers, 'Super Strength', 'Flight', 'Energy Beam' etc.
+- Alter the Super model to replace primary & secondary ability with a 'powers' ManyToManyField.
+- Create a PATCH endpoint for the supers app that allows you to add a new Power to a Super by submitting the PK of the hero and the new power as path variables.
