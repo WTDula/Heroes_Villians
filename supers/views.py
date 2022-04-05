@@ -50,4 +50,12 @@ def supers_detail(request, pk):
     elif request.method == "DELETE":
         super.delete()
         return Response(status = status.HTTP_204_NO_CONTENT)
+
+@api_view(["PATCH"])
+def supers_reassign(request, pk , power):
+    super = get_object_or_404(Super, pk = pk)
+    super.powers = power
+    serializer = SuperSerializer(super)
+    return Response(serializer.data)
+
     
