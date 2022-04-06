@@ -96,7 +96,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/supers/1/",
+							"raw": "http://127.0.0.1:8000/api/supers/2/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -108,7 +108,7 @@
 							"path": [
 								"api",
 								"supers",
-								"1",
+								"2",
 								""
 							]
 						}
@@ -122,7 +122,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Joker Two\",\r\n    \"alter_ego\": \"Jack Napier\",\r\n    \"primary_ability\": \"Chemical engineering\",\r\n    \"secondary_ability\": \"Razor-tipped playing cards\",\r\n    \"catchphrase\": \"Why so serious\",\r\n    \"super_type_id\": 1\r\n}",
+							"raw": "{\r\n    \"name\": \"Wonder Woman\",\r\n    \"alter_ego\": \"Princess Diana\",\r\n    \"primary_ability\": \"Super Strength\",\r\n    \"secondary_ability\": \"Melee\",\r\n    \"catchphrase\": \"The lasso of truth compels you\",\r\n    \"super_type_id\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -163,7 +163,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/supers/17/",
+							"raw": "http://127.0.0.1:8000/api/supers/4/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -175,7 +175,7 @@
 							"path": [
 								"api",
 								"supers",
-								"17",
+								"4",
 								""
 							]
 						}
@@ -188,7 +188,41 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/supers/5/",
+							"raw": "http://127.0.0.1:8000/api/supers/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"supers",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add_Power",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/supers/5/3/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -201,6 +235,7 @@
 								"api",
 								"supers",
 								"5",
+								"3",
 								""
 							]
 						}
