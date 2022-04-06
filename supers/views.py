@@ -50,14 +50,7 @@ def supers_detail(request, pk):
     elif request.method == "DELETE":
         super.delete()
         return Response(status = status.HTTP_204_NO_CONTENT)
-    # elif request.method == "PATCH":
-    #     power_param = request.query_params.get('power')
-    #     super.powers.add(power_param)
-    #     super.save()
-    #     serializer = SuperSerializer(super)
-    #     return Response(serializer.data)
 
-# works but throws a 400 error, then the get all supers shows the power added
 @api_view(["PATCH"])
 def supers_reassign(request, pk , power):
     super = get_object_or_404(Super, pk = pk)
@@ -65,7 +58,7 @@ def supers_reassign(request, pk , power):
     power_to_add.save()
     super.save()
     super.powers.add(power_to_add)
-    serializer = SuperSerializer(super, data = request.data)
+    serializer = SuperSerializer(super, data = request.data, partial=True)
     serializer.is_valid(raise_exception=True)
     serializer.save()
     return Response(status = status.HTTP_200_OK)
